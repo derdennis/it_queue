@@ -1,0 +1,25 @@
+#!/bin/sh
+# usage: _rvmruby <ruby version> [ruby arguments]
+# via: http://urgetopunt.com/rvm/osx/2011/01/28/rvm-os-x-launchd.html
+
+# Tell launchd to use UTF-8. Like a boss.
+export LANG="de:DE.UTF-8"
+export LC_COLLATE="de_DE.UTF-8"
+export LC_CTYPE="de_DE.UTF-8"
+export LC_MESSAGES="de_DE.UTF-8"
+export LC_MONETARY="de_DE.UTF-8"
+export LC_NUMERIC="de_DE.UTF-8"
+export LC_TIME="de_DE.UTF-8"
+export LC_ALL="de_DE.UTF-8"
+
+# Tell launchd to use the existing SSH auth socket. 
+# Slightly modified from: https://discussions.apple.com/message/8686462?messageID=8686462#8686462?messageID=8686462
+# The variable contains underscores, these were missing in the source
+export SSH_AUTH_SOCK=$( find /tmp/launch-*/Listeners -user dennis -type s | head -1 )
+
+if [[ -s /Users/dennis/.rvm/scripts/rvm ]]; then
+  . /Users/dennis/.rvm/scripts/rvm
+fi
+ruby_version=$1; shift
+rvm $ruby_version
+exec ruby "$@"
