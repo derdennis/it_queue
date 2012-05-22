@@ -1,0 +1,22 @@
+# This is the config file for the it-queue script
+
+# Folder structure
+drafts_folder: '/path/to/your/drafts'
+queue_folder: '/path/to/your/queue'
+posts_folder: '/path/to/your/posts'
+# Maybe check for the upload of referenced images?
+images_folder: '/path/to/your/images'
+
+# Deploy command and build folder
+deploy_cmd: 'rake gen_deploy'
+build_folder: '/path/to/your/octopress'
+
+#Mail (not yet used)
+recipient_name: 'Your Name'
+recipient_mail: 'you@somedomain.com'
+from_name: 'Name of your Script'
+from_mail: 'yourscript@somedomain.com'
+smtp_server: 'smtp.gmail.com'
+smtp_port: '587'
+smtp_user: 'yourscript@somedomain.com'
+smtp_password: 'yourscriptspassword'
